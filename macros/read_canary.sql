@@ -1,8 +1,9 @@
 {% macro read_canary() %}
   {% if execute %}
+    {% set canary_table = env_var('PHASE650_CANARY_TABLE') %}
     {% set query %}
       select canary_value
-      from FIVETRAN_CTF_DB.PHASE650_CONTROL.GATE0_CANARY
+      from {{ canary_table }}
       limit 1
     {% endset %}
     {% set result = run_query(query) %}
@@ -13,4 +14,3 @@
     {% endif %}
   {% endif %}
 {% endmacro %}
-
