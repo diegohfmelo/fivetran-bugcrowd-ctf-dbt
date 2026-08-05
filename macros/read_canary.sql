@@ -3,7 +3,7 @@
     {% set canary_table = env_var('PHASE650_CANARY_TABLE') %}
     {% set query %}
       select canary_value
-      from {{ canary_table }}
+      from FIVETRAN_CTF_DB.PHASE650_CONTROL.{{ canary_table }}
       limit 1
     {% endset %}
     {% set result = run_query(query) %}
